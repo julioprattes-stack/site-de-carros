@@ -11,8 +11,9 @@ class CarModel(models.Model):
     model = models.CharField(max_length=200)
     brand = models.ForeignKey(
         BrandModel,
-        on_delete=models.SET_NULL,
-        null=True
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='car_brand'
     )
     factory_year = models.IntegerField(
         blank=True,
@@ -22,9 +23,19 @@ class CarModel(models.Model):
         blank=True,
         null=True
     )
+    plate = models.CharField(
+        max_length=10,
+        blank=True,
+        null=True
+    )
     value = models.DecimalField(
         max_digits=10,
         decimal_places=2,
+        blank=True,
+        null=True
+    )
+    photo = models.ImageField(
+        upload_to='cars/',
         blank=True,
         null=True
     )
