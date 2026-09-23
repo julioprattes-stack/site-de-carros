@@ -1,5 +1,6 @@
-# from django.urls import path
+from django.urls import path
+from cars import views
 
-# urlpatterns = [
-#     path('',)
-# ]ss
+urlpatterns = [
+    path('cars/',views.cars_views, name='car')
+]
