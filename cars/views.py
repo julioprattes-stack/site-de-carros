@@ -7,7 +7,7 @@ def cars_views(request):
 
     if search:
         cars = CarModel.objects.filter(model__icontains=search).order_by('model')
-        
+    
     context = {
         'cars':cars
     }

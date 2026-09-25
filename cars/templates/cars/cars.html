@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {% block content %}
   <style>
     .car-grid {
@@ -91,7 +93,7 @@
     }
   </style>
 
-  <form method="GET" action="{% url 'cars:car' %}">
+  <form method="GET" action="{% url 'cars:cars_list' %}">
     <input type="text" name="search" placeholder="Buscar carro...">
     <button type="submit">Buscar</button>
   </form>
