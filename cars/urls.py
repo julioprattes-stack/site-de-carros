@@ -4,5 +4,6 @@ from cars import views
 app_name = 'cars'
 
 urlpatterns = [
-    path('cars/',views.cars_views, name='cars_list')
+    path('cars/',views.cars_views, name='cars_list'),
+    path('new_cars/', views.new_car_views, name='new_car')
 ]
