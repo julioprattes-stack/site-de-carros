@@ -74,6 +74,16 @@
       <ul>
         <li><a href="{% url 'cars:cars_list' %}">Carros</a></li>
         <li><a href="{% url 'cars:new_car' %}">Cadastrar Carros</a></li>
+
+        {% if user.is_authenticated %}
+            <span>Olá, {{ user.username }}</span>
+            <form method="POST" action="{% url 'accounts:logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Sair</button>
+            </form>
+            {% else %}
+                <a href="{% url 'accounts:login' %}">Entrar</a>
+            {% endif %}
       </ul>
     </nav>
   </header>
