@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from cars.models import CarModel
 from cars.forms import CarForm
 
@@ -19,6 +20,7 @@ def cars_views(request):
         context
     )
 
+@login_required
 def new_car_views(request):
     if request.method == 'POST':
         new_car_form = CarForm(request.POST, request.FILES)

@@ -134,5 +134,6 @@ MAILERS = {
     },
 }
 
+LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'cars:cars_list'
 LOGOUT_REDIRECT_URL = 'cars:cars_list'
