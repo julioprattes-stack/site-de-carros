@@ -19,15 +19,15 @@ class CarsListView(ListView):
             queryset = queryset.filter(model__icontains=search)
         return queryset
 
+class CarDetailView(DetailView):
+    model = CarModel
+    template_name = 'cars/car_detail.html'
+    
 class NewCarCreateView(LoginRequiredMixin, CreateView):
     model = CarModel
     form_class = CarForm
     template_name = 'cars/new_car.html'
     success_url = reverse_lazy('cars:cars_list')
-
-class CarDetailView(DetailView):
-    model = CarModel
-    template_name = 'cars/car_detail.html'
 
 class CarUpdateView(LoginRequiredMixin, UpdateView):
     model = CarModel
