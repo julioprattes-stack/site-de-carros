@@ -9,19 +9,19 @@
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">
-                {{ user_form.username.errros }}
+                {{ form.username.errros }}
                 <label>Usuário: </label>
-                {{ user_form.username }}
+                {{ form.username }}
             </div>
             <div class="form-group">
                 {{ user_form.password1.errros }}
                 <label>Senha: </label>
-                {{ user_form.password1 }}
+                {{ form.password1 }}
             </div>
             <div class="form-group">
-                {{ user_form.password2.errros }}
+                {{ form.password2.errros }}
                 <label>Confirmação de senha: </label>
-                {{ user_form.password2 }}
+                {{ form.password2 }}
             </div>
             <div class="form-group">
                 <button type="submit">Cadastrar</button>
