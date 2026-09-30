@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.views import View
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
@@ -8,18 +9,26 @@ class CustomLoginView(LoginView):
 class CustomLogoutView(LogoutView):
     next_page = 'cars:cars_list'
 
-def register_view(request):
-    if request.method == 'POST':
-        user_form = UserCreationForm(request.POST)
+class RegisterView(View):
+
+    def post(self, request):
+        if request.method == 'POST':
+            user_form = UserCreationForm(request.POST)
         if user_form.is_valid():
             user_form.save()
             return redirect('accounts:login')
+        context = {'user_form':user_form}
+        return render(
+        request,
+        'accounts/register.html',
+        context
+        )
 
-    else:
+    def get(self, request):
         user_form = UserCreationForm()
-
-    return render(
-    request,
-    'accounts/register.html',
-    {'user_form': user_form}
-    )
+        context = {'user_form':user_form}
+        return render(
+        request,
+        'accounts/register.html',
+        context
+        )
