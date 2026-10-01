@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cars.models import CarModel, BrandModel
+from cars.models import CarModel, BrandModel, CarInventoryModel
 
 @admin.register(CarModel)
 class CarAdmin(admin.ModelAdmin):
@@ -10,3 +10,7 @@ class CarAdmin(admin.ModelAdmin):
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
+
+@admin.register(CarInventoryModel)
+class CarInventoryAdmin(admin.ModelAdmin):
+    list_display = ('cars_count', 'cars_value', 'created_at')
