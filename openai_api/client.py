@@ -1,5 +1,8 @@
 import os
+import logging
 from openai import OpenAI
+
+logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
@@ -18,4 +21,5 @@ def get_car_ai_bio(model, brand, year):
         )
         return response.choices[0].message.content
     except Exception:
+        logger.exception('Erro ao gerar bio com a OpenAI')
         return ''
